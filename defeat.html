@@ -56,28 +56,54 @@
       text-decoration: underline;
     }
     main {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
-    .actions {
-      margin-top: 40px;
-      text-align: center;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
     }
-    .actions a {
-      display: inline-block;
-      margin: 8px 10px;
-      padding: 12px 22px;
-      background-color: #002868;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+    .card {
+      background: white;
+      border: 2px solid #002868;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .card .state {
+      font-size: 0.9rem;
       font-weight: bold;
+      color: #BF0A30;
+      margin-bottom: 6px;
     }
-    .actions a.share {
+    .card .name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .card .status {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 18px;
+    }
+    .card-buttons a {
+      display: inline-block;
+      margin-right: 8px;
+      margin-bottom: 6px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      color: white;
+    }
+    .card-buttons .share {
       background-color: #1DA1F2;
     }
-    .actions a.chat {
+    .card-buttons .chat {
       background-color: #BF0A30;
     }
     footer {
@@ -87,9 +113,6 @@
       color: white;
       margin-top: 50px;
       border-top: 6px solid #BF0A30;
-    }
-    ul {
-      line-height: 1.8;
     }
   </style>
 </head>
@@ -116,14 +139,8 @@
 
   <main>
     <h2>Democrat Opposition Tracker</h2>
-    <div id="democrats-list">
+    <div id="democrats-list" class="cards">
       <p>Loading data...</p>
-    </div>
-
-    <div class="actions">
-      <a class="share" href="https://twitter.com/intent/tweet?text=Defeat%20Democrats%20-%20MAKE%20SENATE%20AMERICA%20FIRST&url=https://peppy-ganache-7a60b6.netlify.app/defeat.html" target="_blank">Share on X</a>
-      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss Nationwide</a>
-      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss in Your State</a>
     </div>
   </main>
 
@@ -158,11 +175,20 @@
         return;
       }
 
-      let html = "<ul>";
+      let html = "";
       data.forEach(person => {
-        html += `<li><strong>${person.full_name}</strong> (${person.state}) – ${person.status}</li>`;
+        html += `
+          <div class="card">
+            <div class="state">${person.state || ''}</div>
+            <div class="name">${person.full_name || ''}</div>
+            <div class="status">Status: ${person.status || ''}</div>
+            <div class="card-buttons">
+              <a class="share" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(person.full_name + ' - MAKE SENATE AMERICA FIRST')}&url=https://peppy-ganache-7a60b6.netlify.app/defeat.html" target="_blank">Share on X</a>
+              <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss</a>
+            </div>
+          </div>
+        `;
       });
-      html += "</ul>";
       list.innerHTML = html;
     }
 
