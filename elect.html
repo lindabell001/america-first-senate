@@ -13,17 +13,18 @@
       color: #222;
     }
     header {
-      background-color: #1a365d;
+      background-color: #002868; /* Flag Blue */
       color: white;
       text-align: center;
       padding: 40px 20px;
+      border-bottom: 6px solid #BF0A30; /* Flag Red */
     }
     header h1 {
       margin: 0;
       font-size: 2.2rem;
     }
     nav {
-      background-color: #2c5282;
+      background-color: #BF0A30; /* Flag Red */
       text-align: center;
       padding: 15px;
     }
@@ -44,9 +45,13 @@
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #1a365d;
+      background-color: #002868;
       color: white;
       margin-top: 50px;
+      border-top: 6px solid #BF0A30;
+    }
+    ul {
+      line-height: 1.8;
     }
   </style>
 </head>
@@ -67,13 +72,52 @@
 
   <main>
     <h2>America First Candidates & Nominees</h2>
-    <p>This page will list every candidate and nominee with Status = Candidate or Nominee from our Supabase database.</p>
-    <p>Coming soon: live data from Supabase.</p>
+    <div id="candidates-list">
+      <p>Loading candidates...</p>
+    </div>
   </main>
 
   <footer>
     MAKE SENATE AMERICA FIRST &copy; 2026
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://pnxfelmnyqltuzgdraqh.supabase.co";
+    const SUPABASE_ANON_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function loadCandidates() {
+      const { data, error } = await supabaseClient
+        .from('people')
+        .select('*')
+        .in('status', ['Candidate', 'Nominee'])
+        .order('state');
+
+      const list = document.getElementById('candidates-list');
+
+      if (error) {
+        list.innerHTML = "<p>Error loading data. Please check the key.</p>";
+        console.error(error);
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        list.innerHTML = "<p>No candidates or nominees found yet.</p>";
+        return;
+      }
+
+      let html = "<ul>";
+      data.forEach(person => {
+        html += `<li><strong>${person.full_name}</strong> (${person.state}) – ${person.status}</li>`;
+      });
+      html += "</ul>";
+      list.innerHTML = html;
+    }
+
+    loadCandidates();
+  </script>
 
 </body>
 </html>
