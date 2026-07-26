@@ -13,17 +13,32 @@
       color: #222;
     }
     header {
-      background-color: #1a365d;
+      background-color: #002868;
       color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 6px solid #BF0A30;
+    }
+    header img {
+      height: 80px;
+      width: auto;
+    }
+    header .title-area {
+      flex-grow: 1;
       text-align: center;
-      padding: 40px 20px;
     }
     header h1 {
       margin: 0;
       font-size: 2.2rem;
     }
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 1.1rem;
+    }
     nav {
-      background-color: #2c5282;
+      background-color: #BF0A30;
       text-align: center;
       padding: 15px;
     }
@@ -44,17 +59,21 @@
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #1a365d;
+      background-color: #002868;
       color: white;
       margin-top: 50px;
+      border-top: 6px solid #BF0A30;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>THEY ALSO RAN</h1>
-    <p>Candidates who lost — their records and why they fell short of America First</p>
+    <img src="newlogo.jpg" alt="America First Citizens Network">
+    <div class="title-area">
+      <h1>THEY ALSO RAN</h1>
+      <p>Candidates who lost — their records and why they fell short of America First</p>
+    </div>
   </header>
 
   <nav>
