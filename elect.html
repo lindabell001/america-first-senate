@@ -15,38 +15,42 @@
     header {
       background-color: #002868;
       color: white;
-      padding: 20px;
+      padding: 15px 25px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
       border-bottom: 6px solid #BF0A30;
     }
     header img {
-      height: 80px;
+      height: 70px;
       width: auto;
     }
     header .title-area {
-      flex-grow: 1;
       text-align: center;
+      flex-grow: 1;
+      padding: 0 20px;
     }
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
     }
     header p {
-      margin: 5px 0 0 0;
-      font-size: 1.1rem;
+      margin: 4px 0 0 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
     nav {
       background-color: #BF0A30;
       text-align: center;
-      padding: 15px;
+      padding: 14px;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 14px;
       font-weight: bold;
+      font-size: 0.95rem;
     }
     nav a:hover {
       text-decoration: underline;
@@ -55,6 +59,26 @@
       max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
+    }
+    .actions {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .actions a {
+      display: inline-block;
+      margin: 8px 10px;
+      padding: 12px 22px;
+      background-color: #002868;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .actions a.share {
+      background-color: #1DA1F2;
+    }
+    .actions a.chat {
+      background-color: #BF0A30;
     }
     footer {
       text-align: center;
@@ -73,10 +97,13 @@
 
   <header>
     <img src="newlogo.jpg" alt="America First Citizens Network">
+    
     <div class="title-area">
-      <h1>Elect America First</h1>
-      <p>Candidates and nominees who put America First</p>
+      <h1>MAKE SENATE AMERICA FIRST</h1>
+      <p>Elect America First – Candidates & Nominees</p>
     </div>
+
+    <img src="make-senate.jpg" alt="MAKE SENATE AMERICA FIRST">
   </header>
 
   <nav>
@@ -92,16 +119,23 @@
     <div id="candidates-list">
       <p>Loading candidates...</p>
     </div>
+
+    <div class="actions">
+      <a class="share" href="https://twitter.com/intent/tweet?text=Elect%20America%20First%20-%20MAKE%20SENATE%20AMERICA%20FIRST&url=https://peppy-ganache-7a60b6.netlify.app/elect.html" target="_blank">Share on X</a>
+      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss Nationwide</a>
+      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss in Your State</a>
+    </div>
   </main>
 
   <footer>
-    MAKE SENATE AMERICA FIRST &copy; 2026
+    MAKE SENATE AMERICA FIRST &copy; 2026<br>
+    A Project of America First Citizens Network
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const SUPABASE_URL = "https://pnxfelmnyqltuzgdraqh.supabase.co";
-    const SUPABASE_ANON_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+    const SUPABASE_ANON_KEY = "sb_publishable_YppyBKac2iPCymEzmnicUQ_dHHnqPOZ";
 
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
