@@ -22,31 +22,32 @@
       border-bottom: 6px solid #BF0A30;
     }
     header img {
-      height: 80px;
+      height: 70px;
       width: auto;
     }
     header .title-area {
       flex-grow: 1;
-      text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
     }
     header p {
-      margin: 5px 0 0 0;
-      font-size: 1.1rem;
+      margin: 4px 0 0 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
     nav {
       background-color: #BF0A30;
       text-align: center;
-      padding: 15px;
+      padding: 14px;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 14px;
       font-weight: bold;
+      font-size: 0.95rem;
     }
     nav a:hover {
       text-decoration: underline;
@@ -68,6 +69,27 @@
       border-radius: 8px;
       padding: 20px;
       text-align: center;
+      font-weight: bold;
+    }
+    .actions {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .actions a {
+      display: inline-block;
+      margin: 8px 10px;
+      padding: 12px 22px;
+      background-color: #002868;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .actions a.share {
+      background-color: #1DA1F2;
+    }
+    .actions a.chat {
+      background-color: #BF0A30;
     }
     footer {
       text-align: center;
@@ -85,7 +107,7 @@
     <img src="newlogo.jpg" alt="America First Citizens Network">
     <div class="title-area">
       <h1>MAKE SENATE AMERICA FIRST</h1>
-      <p>Tracking candidates, nominees, and senators who put America First</p>
+      <p>A Project of America First Citizens Network</p>
     </div>
   </header>
 
@@ -110,10 +132,17 @@
     <p style="margin-top: 40px; text-align: center; font-size: 1.1rem;">
       This site will track every Senate race and hold every senator accountable to America First principles.
     </p>
+
+    <div class="actions">
+      <a class="share" href="https://twitter.com/intent/tweet?text=MAKE%20SENATE%20AMERICA%20FIRST&url=https://peppy-ganache-7a60b6.netlify.app" target="_blank">Share on X</a>
+      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss Nationwide</a>
+      <a class="chat" href="https://americafirstcitizensnetwork.org" target="_blank">Discuss in Your State</a>
+    </div>
   </main>
 
   <footer>
-    MAKE SENATE AMERICA FIRST &copy; 2026
+    MAKE SENATE AMERICA FIRST &copy; 2026<br>
+    A Project of America First Citizens Network
   </footer>
 
 </body>
